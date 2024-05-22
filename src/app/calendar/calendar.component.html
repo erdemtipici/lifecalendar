@@ -1,0 +1,17 @@
+<table>
+    <tr>
+        @for (col of cols; track col; let  j = $index) {   
+            @if (j>0) {
+            <td>{{j}}</td>
+            }
+            @else {<td></td>}
+        }
+    </tr>
+    @for (row of rows; track row; let  i = $index) {   
+     <tr>{{i+1}}
+        @for (col of cols; track col; let  j = $index) {   
+        <td>.</td>
+        }
+    </tr>
+    }
+</table>
