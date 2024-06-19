@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
     <tr>
         @for (col of cols; track col; let  j = $index) {   
             @if (j>0) {
@@ -14,4 +14,14 @@
         }
     </tr>
     }
-</table>
+</table>  -->
+
+<mat-grid-list cols="12" rowHeight="1:2">
+    @for (col of cols; track $index) {
+        @for (row of rows; track $index) {
+            <mat-grid-tile>
+                <app-calendar-week></app-calendar-week>
+            </mat-grid-tile>
+        }
+    }    
+</mat-grid-list> 

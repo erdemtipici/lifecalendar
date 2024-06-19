@@ -10,5 +10,5 @@ import { CalendarComponent } from './calendar/calendar.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Life Calendar';
+  title = 'Cal';
 }
