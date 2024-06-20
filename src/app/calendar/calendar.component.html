@@ -1,27 +1,45 @@
-<!-- <table>
-    <tr>
-        @for (col of cols; track col; let  j = $index) {   
-            @if (j>0) {
-            <td>{{j}}</td>
-            }
-            @else {<td></td>}
-        }
-    </tr>
-    @for (row of rows; track row; let  i = $index) {   
-     <tr>{{i+1}}
-        @for (col of cols; track col; let  j = $index) {   
-        <td>.</td>
-        }
-    </tr>
-    }
-</table>  -->
 
-<mat-grid-list cols="12" rowHeight="1:2">
-    @for (col of cols; track $index) {
-        @for (row of rows; track $index) {
-            <mat-grid-tile>
-                <app-calendar-week></app-calendar-week>
-            </mat-grid-tile>
-        }
+
+<!-- <div class="flex flex-col flex-1 justify-items-center">
+    
+    @for (row of rows; track $index) {
+        
+    
+        <div class="flex flex-row justify-items-center space-x-1 ">
+        @for (col of cols; track $index) {
+            @for (row of rows; track $index) {
+            <app-calendar-week></app-calendar-week>
+       }}
+        </div>
+    }
+</div> -->
+
+<div class="grid grid-rows-100 justify-stretch content-center">
+     @for (row of rows; track row; let rowIndex = $index) {
+        <div class="grid grid-cols-52 px-10 mx-10 content-center mx-auto">
+        
+            @for (col of cols; track col; let colIndex = $index) {       
+                @if (rowIndex==0) {
+                    <!-- header -->
+                    <div class="min-h-1 min-w-1 border-0" 
+                    [ngStyle]="{
+                        'width': gridItemWidth + 'px', 
+                        'height': gridItemHeight + 'px'
+                    }">
+                        <div class="text-xs text-center">{{colIndex+1}}</div>
+                    </div>
+                }
+                @else{
+                    <div class="min-h-1 min-w-1 rounded-sm bg-slate-100 border border-slate-400" 
+                    [ngStyle]="{
+                        'width': gridItemWidth + 'px', 
+                        'height': gridItemHeight + 'px'
+                    }">
+                        <app-calendar-week [weekno]="colIndex"></app-calendar-week>                
+                    </div>
+                }
+            }
+        </div>
     }    
-</mat-grid-list> 
+</div>
+    
