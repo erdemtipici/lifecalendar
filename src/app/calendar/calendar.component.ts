@@ -4,6 +4,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { CalendarWeekComponent } from '../calendar-week/calendar-week.component';
 import { CalendarSettingsService, CalendarSettings } from '../calendar-settings.service';
 import { Subscription } from 'rxjs';
+import { CalendarColorSchemaService, CalendarColorSchema } from '../calendar-color-schema.service';
 
 @Component({
   selector: 'app-calendar',
@@ -13,6 +14,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './calendar.component.css'
 })
 export class CalendarComponent {
+  currentColorSchema: CalendarColorSchema = new CalendarColorSchema();
   rows = new Array<number>(100);
   cols = new Array<number>(52);
   
@@ -27,6 +29,17 @@ export class CalendarComponent {
   private subscription: Subscription;
   private calendarSettings: CalendarSettings = new CalendarSettings();
 
+  constructor(private calendarSettingsService: CalendarSettingsService, private colorSchemaService: CalendarColorSchemaService) {
+    this.subscription = this.calendarSettingsService.getSettings().subscribe(settings => {
+      console.log("A new settings is received in calendar component");
+    this.applySettings(settings);
+    });
+
+    this.colorSchemaService.getColorSchemaSubscription().subscribe(colorSchema => {
+      this.currentColorSchema = colorSchema;
+    });    
+  }
+
   applySettings(settings: CalendarSettings) {
     this.calendarSettings = settings;
 
@@ -37,11 +50,6 @@ export class CalendarComponent {
     
   }
 
-  constructor(private calendarSettingsService: CalendarSettingsService) {
-    this.subscription = this.calendarSettingsService.getSettings().subscribe(settings => {
-      console.log("A new settings is received in calendar component");
-    this.applySettings(settings);
-    });
-  }
+  
   
 }

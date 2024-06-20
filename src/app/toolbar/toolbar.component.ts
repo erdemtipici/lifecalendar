@@ -3,6 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CalendarSettingsService, CalendarSettings } from '../calendar-settings.service';
 import { Subscription } from 'rxjs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CalendarColorSchemaService } from '../calendar-color-schema.service';
 
 
 @Component({
@@ -15,15 +16,26 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 export class ToolbarComponent {
   private subscription: Subscription;
   private settings: CalendarSettings = new CalendarSettings();
+  private colorSchemaService : CalendarColorSchemaService;
 
-  constructor(private calendarSettingsService: CalendarSettingsService) {
+  constructor(private calendarSettingsService: CalendarSettingsService, private colorSchemaService_i: CalendarColorSchemaService) {
     this.subscription = this.calendarSettingsService.getSettings().subscribe(settings => {
       this.settings = settings;
     });
+
+    this.colorSchemaService = colorSchemaService_i;
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  activateColorSchemaAge() {
+    this.colorSchemaService.activateColorSchemaForAge();
+  }
+
+  resetView() {
+    this.colorSchemaService.activateColorSchemaDefault();
   }
 
   zoomIn() {

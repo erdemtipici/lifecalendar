@@ -30,10 +30,11 @@
                     </div>
                 }
                 @else{
-                    <div class="min-h-1 min-w-1 rounded-sm bg-slate-100 border border-slate-400 hover:bg-orange-200 hover:border-orange-500 active:bg-violet-700" 
+                    <div class="min-h-1 min-w-1 rounded-sm border border-black hover:bg-orange-200 hover:border-orange-500" 
                     [ngStyle]="{
                         'width': gridItemWidth + 'px', 
-                        'height': gridItemHeight + 'px'
+                        'height': gridItemHeight + 'px',
+                        'background-color': currentColorSchema.colors[rowIndex][colIndex]
                     }">
                         <app-calendar-week [weekno]="colIndex"></app-calendar-week>                
                     </div>

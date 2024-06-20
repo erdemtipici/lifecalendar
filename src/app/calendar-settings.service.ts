@@ -22,7 +22,7 @@ export class CalendarSettingsService {
   
   updateSettings(settings: CalendarSettings) {
     this.currentSettings = settings;
-    this.calendarSettingsSubject.next(settings);
+    this.calendarSettingsSubject.next(this.currentSettings);
   }
 
   constructor() { }
