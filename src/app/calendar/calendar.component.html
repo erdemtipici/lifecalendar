@@ -14,7 +14,7 @@
     }
 </div> -->
 
-<div class="grid grid-rows-100">
+<div class="grid grid-rows-100 mt-10">
      @for (row of rows; track row; let rowIndex = $index) {
         <div class="grid grid-cols-52 px-10 mx-10 content-center mx-auto">
         
@@ -30,7 +30,7 @@
                     </div>
                 }
                 @else{
-                    <div class="min-h-1 min-w-1 rounded-sm bg-slate-100 border border-slate-400" 
+                    <div class="min-h-1 min-w-1 rounded-sm bg-slate-100 border border-slate-400 hover:bg-orange-200 hover:border-orange-500 active:bg-violet-700" 
                     [ngStyle]="{
                         'width': gridItemWidth + 'px', 
                         'height': gridItemHeight + 'px'

@@ -1,33 +1,13 @@
-<!-- div class="flex place-content-center justify-items-center  space-x-5">
-    <button mat-fab extended (click)="zoomOut()">
-        <mat-icon>zoom_out</mat-icon>
-        Zoom Out
-    </button>
-    
-    <button mat-fab extended (click)="zoomIn()">
-        <mat-icon>zoom_in</mat-icon>
-        Zoom In
-    </button>
-
-    <button mat-fab extended (click)="zoomReset()">
-        <mat-icon>zoom_in_map</mat-icon>
-        Reset
-    </button>
-</div> -->
-
-<mat-toolbar>
-    <button mat-icon-button aria-label="Menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>Life Calendar</span>
-    <span class="flex-auto"></span>
-    <button mat-icon-button aria-label="Zoom In" (click)="zoomIn()">
+ <div class="flex flex-col fixed left-0 bottom-0 rounded-lg space-y-1 bg-white-300 mb-3 ml-3">
+    <button mat-icon-button aria-label="Zoom In" (click)="zoomIn()" class="w-10 h-10 rounded-lg border-2 border-black">
       <mat-icon>zoom_in</mat-icon>
     </button>
-    <button mat-icon-button aria-label="Zoom Out" (click)="zoomOut()">
+    
+    <button mat-icon-button aria-label="Zoom Out" (click)="zoomOut()" class="w-10 h-10 rounded-lg border-2 border-black">
         <mat-icon>zoom_out</mat-icon>
     </button>
-    <button mat-icon-button aria-label="Zoom Reset" (click)="zoomReset()">
-        <mat-icon>zoom_in_map</mat-icon>
+    
+    <button mat-icon-button aria-label="Zoom Reset" (click)="zoomReset()" class="w-10 h-10 rounded-lg border-2 border-black">
+        <mat-icon>zoom_in_map</mat-icon>    
     </button>    
-  </mat-toolbar>
+</div>
