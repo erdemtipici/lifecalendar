@@ -1,4 +1,4 @@
-<div class="flex flex-1 justify-items-center space-x-5">
+<!-- div class="flex place-content-center justify-items-center  space-x-5">
     <button mat-fab extended (click)="zoomOut()">
         <mat-icon>zoom_out</mat-icon>
         Zoom Out
@@ -11,6 +11,23 @@
 
     <button mat-fab extended (click)="zoomReset()">
         <mat-icon>zoom_in_map</mat-icon>
-        Zoom In
+        Reset
     </button>
-</div>
+</div> -->
+
+<mat-toolbar>
+    <button mat-icon-button aria-label="Menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Life Calendar</span>
+    <span class="flex-auto"></span>
+    <button mat-icon-button aria-label="Zoom In" (click)="zoomIn()">
+      <mat-icon>zoom_in</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Zoom Out" (click)="zoomOut()">
+        <mat-icon>zoom_out</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Zoom Reset" (click)="zoomReset()">
+        <mat-icon>zoom_in_map</mat-icon>
+    </button>    
+  </mat-toolbar>

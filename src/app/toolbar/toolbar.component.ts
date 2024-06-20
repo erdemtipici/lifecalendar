@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CalendarSettingsService, CalendarSettings } from '../calendar-settings.service';
 import { Subscription } from 'rxjs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, MatToolbarModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css'
 })
