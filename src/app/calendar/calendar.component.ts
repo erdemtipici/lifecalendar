@@ -6,6 +6,9 @@ import { CalendarSettingsService, CalendarSettings } from '../calendar-settings.
 import { Subscription } from 'rxjs';
 import { CalendarColorSchemaService, CalendarColorSchema } from '../calendar-color-schema.service';
 
+const DEFAULT_ROWS = 52;
+const DEFAULT_COLS = 100;
+
 @Component({
   selector: 'app-calendar',
   standalone: true,
@@ -15,8 +18,8 @@ import { CalendarColorSchemaService, CalendarColorSchema } from '../calendar-col
 })
 export class CalendarComponent {
   currentColorSchema: CalendarColorSchema = new CalendarColorSchema();
-  rows = new Array<number>(100);
-  cols = new Array<number>(52);
+  rows = new Array<number>(DEFAULT_COLS);
+  cols = new Array<number>(DEFAULT_ROWS);
   
   gridItemWidthDefault= 20;
   gridItemHeightDefault= 20;
