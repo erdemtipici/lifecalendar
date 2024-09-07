@@ -1,28 +1,28 @@
 import { NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { CalendarWeekComponent } from '../calendar-week/calendar-week.component';
+import { CalendarWeekBoxComponent } from '../calendar-week-box/calendar-week-box.component';
 import { CalendarSettingsService, CalendarSettings } from '../calendar-settings.service';
 import { Subscription } from 'rxjs';
 import { CalendarColorSchemaService, CalendarColorSchema } from '../calendar-color-schema.service';
+import { AppConstantsService } from '../app-constants.service';
+import { CommonModule } from '@angular/common';
 
-const DEFAULT_ROWS = 52;
-const DEFAULT_COLS = 100;
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [ MatGridListModule, CalendarWeekComponent, NgStyle],
+  imports: [ MatGridListModule, CalendarWeekBoxComponent, NgStyle, CommonModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
 export class CalendarComponent {
-  currentColorSchema: CalendarColorSchema = new CalendarColorSchema();
-  rows = new Array<number>(DEFAULT_COLS);
-  cols = new Array<number>(DEFAULT_ROWS);
+  currentColorSchema: CalendarColorSchema = new CalendarColorSchema(this.appConstants);
+  rows = new Array<number>(this.appConstants.CALENDAR_ROWS);
+  cols = new Array<number>(this.appConstants.CALENDAR_COLS);
   
-  gridItemWidthDefault= 20;
-  gridItemHeightDefault= 20;
+  gridItemWidthDefault= 15;
+  gridItemHeightDefault= 15;
 
   zoomFactor = 2;
   
@@ -32,14 +32,13 @@ export class CalendarComponent {
   private subscription: Subscription;
   private calendarSettings: CalendarSettings = new CalendarSettings();
 
-  constructor(private calendarSettingsService: CalendarSettingsService, private colorSchemaService: CalendarColorSchemaService) {
+  constructor(private appConstants: AppConstantsService, private calendarSettingsService: CalendarSettingsService, private colorSchemaService: CalendarColorSchemaService) {
     this.subscription = this.calendarSettingsService.getSettings().subscribe(settings => {
-      console.log("A new settings is received in calendar component");
-    this.applySettings(settings);
-    });
-
+        console.log("A new settings is received in calendar component");
+        this.applySettings(settings);
+      });
     this.colorSchemaService.getColorSchemaSubscription().subscribe(colorSchema => {
-      this.currentColorSchema = colorSchema;
+    this.currentColorSchema = colorSchema;
     });    
   }
 

@@ -1,5 +1,3 @@
-
-
 <!-- <div class="flex flex-col flex-1 justify-items-center">
     
     @for (row of rows; track $index) {
@@ -13,34 +11,33 @@
         </div>
     }
 </div> -->
-
-<div class="grid grid-rows-100 mt-10">
-     @for (row of rows; track row; let rowIndex = $index) {
-        <div class="grid grid-cols-52 px-10 mx-10 content-center mx-auto">
-        
-            @for (col of cols; track col; let colIndex = $index) {       
+<div class="grid grid-rows-101 mt-10">
+    <div class="grid grid-cols-53 px-10 mx-10 content-center mx-auto">
+        @for (row of rows; track row; let rowIndex = $index) {
+            @for (col of cols; track col; let colIndex = $index) {
+                <div 
+                [ngClass]="{
+                    'min-h-1 min-w-1 rounded-md border border-slate-200 hover:bg-orange-200 hover:border-orange-500': rowIndex !== 0 || colIndex !== 0,
+                    'min-h-1 min-w-1 border-0 text-xs text-center': rowIndex === 0 || colIndex === 0
+                }"
+                [ngStyle]="{
+                                'width': gridItemWidth + 'px', 
+                                'height': gridItemHeight + 'px',
+                                'background-color': (rowIndex > 0 && colIndex > 0) ? currentColorSchema.colors[rowIndex][colIndex] : 'transparent'
+                }">
                 @if (rowIndex==0) {
-                    <!-- header -->
-                    <div class="min-h-1 min-w-1 border-0" 
-                    [ngStyle]="{
-                        'width': gridItemWidth + 'px', 
-                        'height': gridItemHeight + 'px'
-                    }">
-                        <div class="text-xs text-center">{{colIndex+1}}</div>
-                    </div>
+                    @if (colIndex==0) {<!-- the upper corner, leave empty -->}
+                    @else{ {{colIndex}} }
                 }
-                @else{
-                    <div class="min-h-1 min-w-1 rounded-md border border-slate-200 hover:bg-orange-200 hover:border-orange-500" 
-                    [ngStyle]="{
-                        'width': gridItemWidth + 'px', 
-                        'height': gridItemHeight + 'px',
-                        'background-color': currentColorSchema.colors[rowIndex][colIndex]
-                    }">
-                        <app-calendar-week [weekno]="colIndex"></app-calendar-week>                
-                    </div>
+                @else if (colIndex==0) {
+                    {{rowIndex}}
                 }
+                @else {
+                    <app-calendar-week-box [weekno]="colIndex"></app-calendar-week-box>
+                }
+            
+            </div>
             }
-        </div>
-    }    
+        }
+    </div>
 </div>
-    

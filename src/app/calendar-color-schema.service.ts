@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
-const DEFAULT_ROWS = 100;
-const DEFAULT_COLS = 52;
+import { AppConstantsService } from './app-constants.service';
 
 export class CalendarColorSchema {
   colors: string[][] = []; // Initialize 'colors' property as an empty array
 
-  constructor() { 
-    for (let i = 0; i < DEFAULT_ROWS; i++) {
+  constructor(private appConstants: AppConstantsService) { 
+    for (let i = 0; i < this.appConstants.CALENDAR_ROWS; i++) {
       this.colors[i] = [];
-      for (let j = 0; j < DEFAULT_COLS; j++) {
+      for (let j = 0; j < this.appConstants.CALENDAR_COLS; j++) {
         this.colors[i][j] = '#FFFFFF';
       }
     }
@@ -20,13 +18,13 @@ export class CalendarColorSchema {
 @Injectable({
   providedIn: 'root'
 })
+
 export class CalendarColorSchemaService {
-  private currentSchema: CalendarColorSchema = new CalendarColorSchema();
+  private currentSchema: CalendarColorSchema = new CalendarColorSchema(this.appConstants);
   private colorSchemaSubject = new BehaviorSubject<CalendarColorSchema>(this.currentSchema);
   
-  
-  constructor() {
-    // current active schema is age based color schema
+  constructor(private appConstants: AppConstantsService) { 
+      // current active schema is age based color schema
     this.activateColorSchemaDefault();
   }
   
@@ -35,11 +33,11 @@ export class CalendarColorSchemaService {
   }
 
   activateColorSchemaDefault() {
-    let schema = new CalendarColorSchema();
+    let schema = new CalendarColorSchema(this.appConstants);
 
-    for (let i = 0; i < DEFAULT_ROWS; i++) {
+    for (let i = 0; i < this.appConstants.CALENDAR_ROWS; i++) {
       schema.colors[i] = [];
-      for (let j = 0; j < DEFAULT_COLS; j++) {
+      for (let j = 0; j < this.appConstants.CALENDAR_COLS; j++) {
         schema.colors[i][j] = '#FFFFFF';
       }
     }
@@ -48,11 +46,11 @@ export class CalendarColorSchemaService {
   }
 
   activateColorSchemaForAge() {
-    let schema = new CalendarColorSchema();
+    let schema = new CalendarColorSchema(this.appConstants);
     
-    for (let i = 0; i < DEFAULT_ROWS; i++) {
+    for (let i = 0; i < this.appConstants.CALENDAR_ROWS; i++) {
       schema.colors[i] = [];
-      for (let j = 0; j < DEFAULT_COLS; j++) {
+      for (let j = 0; j < this.appConstants.CALENDAR_COLS; j++) {
 
         // first 12 years is blue
         if (i < 12) {

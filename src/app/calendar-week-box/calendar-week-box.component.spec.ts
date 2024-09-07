@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalendarWeekComponent } from './calendar-week.component';
+import { CalendarWeekComponent } from './calendar-week-box.component';
 
 describe('CalendarWeekComponent', () => {
   let component: CalendarWeekComponent;

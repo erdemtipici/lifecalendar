@@ -3,13 +3,13 @@ import { Component, Input} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 
 @Component({
-  selector: 'app-calendar-week',
+  selector: 'app-calendar-week-box',
   standalone: true,
   imports: [CommonModule, MatCardModule],
-  templateUrl: './calendar-week.component.html',
-  styleUrl: './calendar-week.component.css'
+  templateUrl: './calendar-week-box.component.html',
+  styleUrl: './calendar-week-box.component.css'
 })
-export class CalendarWeekComponent{
+export class CalendarWeekBoxComponent{
   @Input() weekno: number;
 
    constructor() { 
