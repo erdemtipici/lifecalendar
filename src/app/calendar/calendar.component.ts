@@ -7,12 +7,13 @@ import { Subscription } from 'rxjs';
 import { CalendarColorSchemaService, CalendarColorSchema } from '../calendar-color-schema.service';
 import { AppConstantsService } from '../app-constants.service';
 import { CommonModule } from '@angular/common';
+import { ToolbarComponent } from "../toolbar/toolbar.component";
 
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [ MatGridListModule, CalendarWeekBoxComponent, NgStyle, CommonModule],
+  imports: [MatGridListModule, CalendarWeekBoxComponent, NgStyle, CommonModule, ToolbarComponent],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
@@ -21,8 +22,8 @@ export class CalendarComponent {
   rows = new Array<number>(this.appConstants.CALENDAR_ROWS);
   cols = new Array<number>(this.appConstants.CALENDAR_COLS);
   
-  gridItemWidthDefault= 15;
-  gridItemHeightDefault= 15;
+  gridItemWidthDefault= this.appConstants.GRIDITEMS_WIDTH;
+  gridItemHeightDefault= this.appConstants.GRIDITEMS_HEIGHT;
 
   zoomFactor = 2;
   

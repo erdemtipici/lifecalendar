@@ -1,27 +1,19 @@
-<div class="flex flex-row justify-between mt-5 ml-5">
-    
-        <button mat-icon-button aria-label="home">
-            <mat-icon>menu</mat-icon>Life Calendar
-        </button>        
+<div class="flex flex-row justify-between items-center mt-5 ml-5 w-full h-12">
+  
+  <!-- Left Section: Menu Button and Text -->
+  <div class="flex flex-row items-center space-x-2">
+    <button mat-icon-button aria-label="Open menu" (click)="onToggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>        
+    <span class="text-lg">Life Calendar</span>
+  </div>
 
-
-        <div class="example-button-row">
-            <button mat-button>Home</button>            
-            <a mat-button href="https://www.google.com/" target="_blank">Link</a>
-        </div>
-        <div class="example-button-row">
-            <button mat-button>Categories</button>            
-            <a mat-button href="https://www.google.com/" target="_blank">Link</a>
-        </div>
-        <div class="example-button-row">
-            <button mat-button>Pricing</button>            
-            <a mat-button href="https://www.google.com/" target="_blank">Link</a>
-        </div>        
-
-        <div class="example-button-row">
-            <button mat-flat-button>Settings</button>            
-            <a mat-flat-button href="https://www.google.com/" target="_blank">Link</a>
-        </div>
-        
-    
+  <!-- Right Section: Navigation Links (aligned to the right) -->
+  <div class="flex space-x-4 ml-auto mr-5">
+    <button mat-button [routerLink]="['/']">Home</button>
+    <button mat-button [routerLink]="['/categories']">Categories</button>
+    <button mat-button [routerLink]="['/pricing']">Pricing</button>
+    <button mat-flat-button [routerLink]="['/settings']">Settings</button>
+  </div>
+  
 </div>

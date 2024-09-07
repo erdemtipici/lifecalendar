@@ -10,10 +10,12 @@ import {MatCardModule} from '@angular/material/card';
   styleUrl: './calendar-week-box.component.css'
 })
 export class CalendarWeekBoxComponent{
-  @Input() weekno: number;
-
+  @Input() weekindex: number;
+  @Input() yearindex: number;
+  
    constructor() { 
     // Constructor logic goes here 
-    this.weekno = 1;
+    this.weekindex = 0;   
+    this.yearindex = 0;
   } 
 }

@@ -11,19 +11,23 @@
         </div>
     }
 </div> -->
-<div class="grid grid-rows-101 mt-10">
-    <div class="grid grid-cols-53 px-10 mx-10 content-center mx-auto">
+<app-toolbar></app-toolbar>
+
+    <div class="grid grid-rows-[repeat(52, minmax(auto, 1fr))] gap-4 mx-auto">
+    <div class="grid grid-cols-53 px-10 mx-auto content-center mx-auto">
         @for (row of rows; track row; let rowIndex = $index) {
             @for (col of cols; track col; let colIndex = $index) {
                 <div 
                 [ngClass]="{
                     'min-h-1 min-w-1 rounded-md border border-slate-200 hover:bg-orange-200 hover:border-orange-500': rowIndex !== 0 || colIndex !== 0,
                     'min-h-1 min-w-1 border-0 text-xs text-center': rowIndex === 0 || colIndex === 0
-                }"
+                }" 
                 [ngStyle]="{
                                 'width': gridItemWidth + 'px', 
                                 'height': gridItemHeight + 'px',
-                                'background-color': (rowIndex > 0 && colIndex > 0) ? currentColorSchema.colors[rowIndex][colIndex] : 'transparent'
+                                'background-color': (rowIndex > 0 && colIndex > 0) ? currentColorSchema.colors[rowIndex][colIndex] : 'transparent',
+                                'color': (rowIndex === 0 || colIndex === 0) ? 'gray' : 'inherit',
+                                'font-size': (rowIndex === 0 || colIndex === 0) ? '8px' : 'inherit'
                 }">
                 @if (rowIndex==0) {
                     @if (colIndex==0) {<!-- the upper corner, leave empty -->}
@@ -33,7 +37,7 @@
                     {{rowIndex}}
                 }
                 @else {
-                    <app-calendar-week-box [weekno]="colIndex"></app-calendar-week-box>
+                    <app-calendar-week-box [weekindex]="colIndex" [yearindex]="rowIndex"></app-calendar-week-box>
                 }
             
             </div>

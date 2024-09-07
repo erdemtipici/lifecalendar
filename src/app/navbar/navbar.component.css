@@ -2,3 +2,32 @@
     display: table-cell;
     max-width: 600px;
   }
+  
+  /* Fullscreen layout for the sidenav container */
+.sidenav-container {
+  height: 100vh; /* Full height */
+  width: 100vw; /* Full width */
+}
+
+/* Styling for the sidenav (sidebar) */
+.sidenav {
+  width: 250px; /* Adjust width of the sidebar */
+  background-color: #126dc7; /* Sidebar background color */
+  padding-top: 20px;
+}
+
+/* Main content styling */
+.main-content {
+  padding: 20px; /* Add padding to the main content */
+}
+
+/* Sidebar links styling */
+.mat-nav-list a {
+  font-size: 16px; /* Adjust font size */
+  color: #333; /* Link color */
+  padding: 10px 15px; /* Add padding for touch targets */
+}
+
+.mat-nav-list a:hover {
+  background-color: #e0e0e0; /* Hover effect */
+}
