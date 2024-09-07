@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-const DEFAULT_ROWS = 52;
-const DEFAULT_COLS = 100;
+const DEFAULT_ROWS = 100;
+const DEFAULT_COLS = 52;
 
 export class CalendarColorSchema {
   colors: string[][] = []; // Initialize 'colors' property as an empty array
@@ -88,7 +88,7 @@ export class CalendarColorSchemaService {
         }
         //else is white
         else {
-          schema.colors[i][j] = '#FFFFFF';
+          schema.colors[i][j] = '#00FFFF';
         }
       }
     }
